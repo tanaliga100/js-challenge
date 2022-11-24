@@ -1,4 +1,4 @@
-export const Test = () => {
+const Test = () => {
   function testFn(params) {
     return params;
   }
@@ -6,3 +6,5 @@ export const Test = () => {
   const res = testFn("THIS IS A TEST ");
   console.warn("RESULTS:", res);
 };
+
+Test();
