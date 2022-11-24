@@ -1,28 +1,36 @@
 const Test = () => {
-  const products = [
-    { title: "Iphone 8", company: "Apple" },
-    { title: "Samsung A20", company: "Samsung" },
-    { title: "Galaxy S5", company: "Samsung" },
-    { title: "Iphone 10", company: "Apple" },
-    { title: "Iphone X", company: "Apple" },
-    { title: "ThinkPad", company: "Lenovo" },
-    { title: "Ideapad 3", company: "Lenovo" },
-  ];
+  const string = "Javascript is the best programming language";
 
   function testFn(params) {
-    // USING MAP
-    let tempArray = params.map((item) => item.company);
-    return [...new Set(tempArray)];
-    // USING REDUCE
-    return [
-      ...params.reduce((acc, curr) => {
-        acc.add(curr.company);
-        return acc;
-      }, new Set()),
-    ];
+    let str = params.split(" ");
+    str = str.map((item) => {
+      let tempItem = item.toUpperCase().split("");
+      return tempItem.reduce(
+        (acc, curr) => {
+          acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
+          if (acc[curr] > acc.max) {
+            acc.max = acc[curr];
+          }
+          return acc;
+        },
+        { max: 1, word: item.toUpperCase() }
+      );
+    });
+    let amount = 1;
+    let word = "";
+    for (let item of str) {
+      if (item.max > amount) {
+        amount = item.max;
+        word = item.word;
+      }
+    }
+    if (amount > 1) {
+      return word;
+    }
+    return -1;
   }
-  const res = testFn(products);
-  console.warn("RESULTS:", res);
+  const res = testFn(string);
+  console.log("RESULTS:", res);
 };
 
 Test();
