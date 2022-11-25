@@ -11,7 +11,6 @@ const Test = () => {
       return `${tempArr[1]}  ${tempArr[tempArr.length - 2]}`;
     }
   }
-
   console.log("Results", testFn([1]));
   console.log("Results", testFn([9, 1]));
   console.log("Results", testFn([76, -7, 8]));
