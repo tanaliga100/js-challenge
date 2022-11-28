@@ -1,22 +1,18 @@
 const Test = () => {
   function testFn(params) {
-    let withOutVowels = [];
-    const words = params.split(" ").join("").split("");
-    for (let i = 0; i < words.length; i++) {
-      if (
-        words[i].toLowerCase() === "a" ||
-        words[i].toLowerCase() === "e" ||
-        words[i].toLowerCase() === "i" ||
-        words[i].toLowerCase() === "o" ||
-        words[i].toLowerCase() === "u"
-      ) {
-        continue;
+    const str = params.split(" ");
+    const newWord = str.map((word) => {
+      if (word.length >= 5) {
+        let words = word.split("").reverse().join("");
+        return words;
+      } else {
+        return word;
       }
-      withOutVowels.push(words[i]);
-    }
-    return withOutVowels.toString();
+    });
+    return newWord.join(" ");
   }
-  const res = testFn("THIS IS A TEST ");
+  const res = testFn("Hey Codplay Im surely miss you");
   console.log("RESULTS:", res);
 };
+
 Test();
