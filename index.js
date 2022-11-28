@@ -1,18 +1,22 @@
 const Test = () => {
-  function testFn(params) {
-    const str = params.split(" ");
-    const newWord = str.map((word) => {
-      if (word.length >= 5) {
-        let words = word.split("").reverse().join("");
-        return words;
-      } else {
-        return word;
-      }
-    });
-    return newWord.join(" ");
+  function getPositions(str) {
+    let result = "";
+    for (let i = 0; i < str.length; i++) {
+      const code = str.toUpperCase().charCodeAt(i);
+      if (code > 64 && code < 91) result += code - 64 + " ";
+    }
+    return result.slice(0, result.length - 1);
   }
-  const res = testFn("Hey Codplay Im surely miss you");
-  console.log("RESULTS:", res);
-};
 
+  const results = getPositions("coldplay'");
+  console.log(results);
+};
 Test();
+
+// const alph = "abcdefghijklmnopqrstuvwxyz".split("");
+// const words = str.split(" ").join("").split("");
+// const toReturn = words.map((x, i) => {
+//   console.log("index", i);
+//   return alph.indexOf(x.toLowerCase()) + 1;
+// });
+// return toReturn;
